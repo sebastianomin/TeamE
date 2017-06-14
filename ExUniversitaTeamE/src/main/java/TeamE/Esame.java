@@ -11,7 +11,16 @@ public class Esame {
     @Id
 	private String nome;
 	private int numeroPrenotati;
+	private int idAula;
 	
+	
+	
+	public int getIdAula() {
+		return idAula;
+	}
+	public void setIdAula(int idAula) {
+		this.idAula = idAula;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -26,8 +35,9 @@ public class Esame {
 	}
 	@Override
 	public String toString() {
-		return "Esame [nome=" + nome + ", numeroPrenotati=" + numeroPrenotati + "]";
+		return "Esame [nome=" + nome + ", numeroPrenotati=" + numeroPrenotati + ", idAula=" + idAula + "]";
 	}
+	
 	
 
 }

@@ -11,7 +11,6 @@ public class Aula {
 	@GeneratedValue
 	private int id;
 	private int numeroPosti;
-	private String materia;
 	public int getId() {
 		return id;
 	}
@@ -24,16 +23,12 @@ public class Aula {
 	public void setNumeroPosti(int numeroPosti) {
 		this.numeroPosti = numeroPosti;
 	}
-	public String getMateria() {
-		return materia;
-	}
-	public void setMateria(String materia) {
-		this.materia = materia;
-	}
 	@Override
 	public String toString() {
-		return "Aula [id=" + id + ", numeroPosti=" + numeroPosti + ", materia=" + materia + "]";
+		return "Aula [id=" + id + ", numeroPosti=" + numeroPosti + "]";
 	}
+	
+	
 	
 	
 

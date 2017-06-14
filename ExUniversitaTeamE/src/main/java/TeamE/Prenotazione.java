@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 
 public class Prenotazione {
-	ArrayList<Aula> aule=new ArrayList<Aula>();
-	ArrayList<Esame> esami=new ArrayList<Esame>();
+	
 	
 	public void createEsame(ServicesCrud crud, Scanner scanner) {
 		System.out.println("Inserisci nome");
@@ -15,8 +14,11 @@ public class Prenotazione {
 		System.out.println("Inserisci numero studenti prenotati");
 		int prenotati = scanner.nextInt();
 		scanner.nextLine();
+		System.out.println("Inserisci numero aula");
+		int idAula = scanner.nextInt();
 		Esame e = new Esame();
 		e.setNome(nome);
+		e.setIdAula(idAula);
 		e.setNumeroPrenotati(prenotati);
 		crud.jpaCreate(e);
 	}
@@ -38,7 +40,7 @@ public class Prenotazione {
 		Esame esame = (Esame) crud.jpaRead(query).getSingleResult();
 		System.out.println(esame);
 		System.out.println("Cosa vuoi modificare?");
-		System.out.println("1 Nome - 2 numeroPrenotati");
+		System.out.println("1 Nome - 2 numeroPrenotati-3 Aula");
 		int scelta = scanner.nextInt();
 		scanner.nextLine();
 		switch (scelta) {
@@ -52,6 +54,12 @@ public class Prenotazione {
 			int numeroPrenotati = scanner.nextInt();
 			scanner.nextLine();
 			esame.setNumeroPrenotati(numeroPrenotati);
+			break;
+		case 3:
+			System.out.println("Inserisci numeroAula");
+			int numeroAula = scanner.nextInt();
+			scanner.nextLine();
+			esame.setNumeroPrenotati(numeroAula);
 			break;
 		default:
 			System.out.println("Scelta non valida");
@@ -69,13 +77,10 @@ public class Prenotazione {
 
 	}
 	public void createAula(ServicesCrud crud, Scanner scanner) {
-		System.out.println("Inserisci materia");
-		String materia = scanner.nextLine();
 		System.out.println("Inserisci numeroPosti");
 		int numeroPosti = scanner.nextInt();
 		scanner.nextLine();
 		Aula a = new Aula();
-		a.setMateria(materia);
 		a.setNumeroPosti(numeroPosti);
 		
 		crud.jpaCreate(a);
@@ -98,27 +103,14 @@ public class Prenotazione {
 		String query = "SELECT a FROM Aula a WHERE a.id =" + idAula;
 	    Aula a = (Aula) crud.jpaRead(query).getSingleResult();
 		System.out.println(a);
-		System.out.println("Cosa vuoi modificare?");
-		System.out.println("1 materia - 2 numeroPosti");
-		int scelta = scanner.nextInt();
-		scanner.nextLine();
-		switch (scelta) {
-		case 1:
-			System.out.println("Inserisci nuova materia");
-			String nuovaMateria = scanner.nextLine();
-			a.setMateria(nuovaMateria);
-			break;
-		case 2:
-			System.out.println("Inserisci numeroPosti");
+		
+			System.out.println("Inserisci nuovi Posti");
 			int nuoviPosti = scanner.nextInt();
 			scanner.nextLine();
 			a.setNumeroPosti(nuoviPosti);
-			break;
+			
 		
-		default:
-			System.out.println("Scelta non valida");
-			break;
-		}
+		
 		crud.jpaUpdate(a);
 	}
 
@@ -132,10 +124,7 @@ public class Prenotazione {
 
 	}
 	
-	public void VerificaDisponibilita(ServicesCrud crud){
-		
-		
-	}
+	
 
 
 	
