@@ -8,8 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "esame", schema = "gestione_universita")
 public class Esame {
-
-	@Id
+    @Id
 	private String nome;
 	private int numeroPrenotati;
 	
